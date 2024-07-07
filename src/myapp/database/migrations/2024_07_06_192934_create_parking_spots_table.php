@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('parking_spots', function (Blueprint $table) {
             $table->id();
             $table->enum('spot_type', ['regular', 'motorcycle']);
-            $table->string('plate_number')->nullable();
             $table->unsignedSmallInteger('occupied')->default(0);
             $table->integer('row');
             $table->integer('col');
