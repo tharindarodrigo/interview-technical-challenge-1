@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\Api\ParkingLotController;
+use App\Http\Controllers\Api\ParkingSpotController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Spatie\FlareClient\Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +20,12 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+//parking lot
+Route::get('/parking-lot', ParkingLotController::class);
+
+//park
+Route::post('/parking-spot/{id}/park', [ParkingSpotController::class, 'park']);
+
+//unpark
+Route::post('/parking-spot/{id}/unpark', [ParkingSpotController::class, 'unpark']);
