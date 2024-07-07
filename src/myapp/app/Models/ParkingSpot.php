@@ -85,7 +85,7 @@ class ParkingSpot extends Model
         return false;
     }
 
-    public function scopeVacantSpotsForVan(Builder $query, $row, $col): void
+    public function scopeVacantSpotsForVan(Builder $query, int $row, int $col): void
     {
         $query->where('row', $row)
             ->where('col', '>=', $col)
