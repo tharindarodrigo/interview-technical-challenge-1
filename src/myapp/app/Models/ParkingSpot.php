@@ -15,7 +15,7 @@ class ParkingSpot extends Model
 
     protected $fillable = ['row', 'col', 'spot_type', 'occupied', 'plate_number'];
 
-    public function canPark($vehicleType): bool
+    public function canPark(string $vehicleType): bool
     {
         if ($vehicleType === 'motorcycle') {
             return ! $this->occupied;
@@ -39,7 +39,7 @@ class ParkingSpot extends Model
         return $regularVacantSpots === 3;
     }
 
-    public function park($vehicleType): bool
+    public function park(string $vehicleType): bool
     {
         if ($vehicleType === 'motorcycle' || $vehicleType === 'car') {
             return $this->update(['occupied' => 1]);
